@@ -1,0 +1,11 @@
+Debug/
+Release/
+x64/
+x86/
+ARM64/
+.vs/
+obj/
+bin/
+
+# Override root .gitignore to ensure we pick up changes for the sample app
+!*.sln

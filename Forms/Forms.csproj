@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyTitle>Forms</AssemblyTitle>
+    <Product>Forms</Product>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="BrowserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="BrowserForm.Designer.cs">
+      <DependentUpon>BrowserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Update="EventMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1343.22" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\EdgeWebView2-80.jpg" />
+    <Content Include="screenshots\winforms-browser-screenshot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="BrowserForm.resx">
+      <DependentUpon>BrowserForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <PreBuildEvent />
+    <PostBuildEvent>if exist "$(ProjectDir)..\Startup\bin\Debug\DefaultLogin" xcopy "$(ProjectDir)\bin\Debug" "$(ProjectDir)..\Startup\bin\Debug\DefaultLogin" /y /s</PostBuildEvent>
+  </PropertyGroup>
+</Project>
